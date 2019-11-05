@@ -1,225 +1,122 @@
-{% extends "base.html" %}
-{% block title %}{{ article.title }}{% endblock %}
+---
+Title: 2018 Fall CP 課程
+Date: 2018-09-10 11:00
+Category: Misc
+Tags: 2018FallCP
+Slug: 2018-Fall-32-bit-Windows
+Author: yen
+---
 
-{# <!-- Choosing cover image --> #}
-{% if article.cover %}
-    {% if article.cover|lower|truncate(4, True, '') == "http" %}
-        {% set default_cover = article.cover %}
-    {% else %}
-        {% set default_cover = SITEURL+"/"+article.cover %}
-    {% endif %}
-{% elif article.og_image %}
-    {% if article.og_image|lower|truncate(4, True, '') == "http" %}
-        {% set default_cover = article.og_image %}
-    {% else %}
-        {% set default_cover = SITEURL+"/"+article.og_image %}
-    {% endif %}
-{% elif HEADER_COVER %}
-  {% set default_cover = SITEURL+"/"+HEADER_COVER %}
-{% endif %}
+2019 Fall 一開始, 1903 版的 Windows 10 就大舉更新, 除了逐步去掉先前許多舊版的設定視窗, 也將系統的指令搜尋與 App 應用程式進行綁定. 許多採用可攜設定的程式執行流程, 隨著更新進程的推展, 必須因應修改才可以正常運作.
 
-{% if article.color %}
-  {% set default_color = article.color %}
-{% elif HEADER_COLOR %}
-  {% set default_color = HEADER_COLOR %}
-{% endif %}
+<!--PELICAN_END_SUMMARY -->
 
-{% block head %}
-    {{ super() }}
+為何要使用可攜系統
+----
 
-    <link href="{{ SITEURL }}/{{ article.url }}" rel="canonical" />
-    {% for keyword in article.keywords %}
-        <meta name="keywords" content="{{keyword}}" >
-    {% endfor %}
+自從 1995 年 Windows 95 與 Solidworks 95 在個人電腦中推出, 至今二十幾年, 幾乎所有與機械設計相關的單機套件的操作系統都在 Windows 上, 但是一旦需要建構所謂的 client-server 或雲端機械設計運算系統, 以 Ubuntu 為主的 Linux 伺服器顯然在成本與效益上, 擁有許多優勢. 因此長遠來看, 任何在 Windows 上操作的計算機運算流程, 都必須設法能夠在 Windows 與 Linux 上運作.
 
-    {% if description %}
-        <meta name="description" content="{{ description }}">
-    {% elif article.headline %}
-        <meta name="description" content="{{ article.headline }}">
-    {% elif article.summary %}
-        <meta name="description" content="{{ article.summary|striptags|truncate(140) }}">
-    {% endif %}
+在 Windows 10 環境中使用可攜系統的原因, 主要是讓計算機程式課程中所使用的工具, 都可以放在 USB 3.0 規格以上的隨身碟或隨身硬碟上運作, 而第二個原因則是希望這些工具都能相容於 Linux 系統.
 
-    {% for author in article.authors %}
-        <meta name="author" content="{{ author }}">
-    {% endfor %}
+Windows 10 更新所造成的問題
+----
 
-    {% for tag in article.tags %}
-        <meta name="tags" content="{{tag}}">
-    {% endfor %}
+電腦輔助設計室中的第三磁區, 在完全沒有還原保護的情況下, 每一台電腦每次開機都會執行 Windows 10 的更新檢查, 然後依照更新期程的排定, 逐步更新. 因此, 從實際面來看, 每一台電腦的設定與內容並非完全相同. 使用者在開機後, 就必須根據電腦的現況進行因應. 而電腦操作系統更新造成的問題在於: 各電腦的實際現況與下載可攜系統當時製作環境不同, 因此部分設定必須配合修改後, 才可正常運作.
 
-    {% include 'partials/og_article.html' %}
-    {% include 'partials/jsonld_article.html' %}
-{% endblock %}
+系統 path 搜尋路徑的修改
+----
 
-{% block header %}
-    <!-- Progressbar -->
-    <div class="progress-container">
-        <span class="progress-bar"></span>
-    </div>
+Windows 10 1903 版次在 Fall 開學後, 將 Python 執行路徑的搜尋納入系統 path 後, 假如所使用的 Windows 10 並未安裝 Python 解譯套件, 以系統內定 path 搜尋後, 會自動將使用者導引到 Python App 的安裝畫面.
 
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header id="post-header" class="has-cover">
-      <div class="inner">
-        <nav id="navigation">
-          {% if SITE_LOGO %}
-            <span class="blog-logo">
-                <a href="{{ SITEURL }}/"><img src="{{SITE_LOGO}}" alt="Blog Logo" /></a>
-            </span>
-          {% else %}
-            <span id="home-button" class="nav-button">
-                <a class="home-button" href="{{ SITEURL }}/index.html" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
-            </span>
-          {% endif %}
-          <span id="menu-button" class="nav-button">
-            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
-          </span>
-        </nav>
-        <h1 class="post-title">{{ article.title }}</h1>
-        <!-- TODO : Proper class for headline -->
-        {% if article.headline %}
-            <span class="blog-description">{{ article.headline }}</h3>
-        {% endif %}
-        <span class="post-meta">
-            {% for author in article.authors %}
-                <a href="{{ SITEURL }}/{{ author.url }}">{{ author|title }}</a>
-            {% endfor %}
-            | <time datetime="{{ article.locale_date }}">{{ article.locale_date }}</time>
-        </span>
-        <!-- TODO : Modified check -->
-        {% if article.modified %}
-            <span class="post-meta"> | Updated on {{ article.locale_modified }}</span>
-        {% endif %}
-        {% if default_cover %}
-            <div class="post-cover cover" style="background-image: url('{{ default_cover }}')">
-        {% elif default_color %}
-            <div class="post-cover cover" style="background-color: {{ default_color }}">
-        {% else %}
-            <div class="post-cover cover" style="background-image: url('{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/post-bg.jpg')">
-        {% endif %}
-      </div>
-    </header>
-{% endblock header %}
+這樣的改變, 將會對原先可攜程式系統造成兩種影響, 第一的影響是: start.bat 中以系統 path 設為第一優先下, 使用者在命令列中輸入 python 解譯器指令時, Windows 10 就會將使用者帶到要求 Python App 安裝的畫面.
 
-{% block content %}
+因應修改的方法, 就是將 start.bat 中操作系統 path 優先權去除, 也就是 set path=%path%;... 中的 %path% 放到最後順序, 或者乾脆刪除.
 
-    <!-- Post content -->
-    <main class="content" role="main">
-        <article class="post">
-        <div class="inner">
-            <section class="post-content">
-                {{article.content}}
-            </section>
+第二項影響則是對 SciTE中 Python 的程式執行. 因為 2019 Fall 開始隨身程式系統製作時 path 可綁訂至隨身系統中的 Python 3.7.3, 因此 SciTE 中有關 .py 程式執行設定, 直接設為 path 中, 以 pythonw.exe 解譯 .py 程式, 一旦 path 無法指到隨身系統中的 python 解譯系統, SciTE 中的 .py 程式執行, 就必須明確指定 Python 3.7.3 所在的指令路徑.
 
-            <section class="post-info">
-                <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text={{ article.title }}&amp;url={{ SITEURL }}/{{ article.url }}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
-                    </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ SITEURL }}/{{ article.url }}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
-                    </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url={{ SITEURL }}/{{ article.url }}" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
-                    </a>
-                    <div class="clear"></div>
-                </div>
+也就是帶出 Options -> python.properties 設定檔案, 然後進行修改:
 
-                {% if article.tags %}
-                <aside class="post-tags">
-                    {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>{% if not loop.last %}{% endif %}{% endfor %}
-                </aside>
-                {% endif %}
+<pre class="brush:python">
+if PLAT_WIN
+    command.go.*.py=Y:\cad\201906_fall\data\py373\pythonw -u "$(FileNameExt)"
+    command.go.subsystem.*.py=1
+    command.go.*.pyw=pythonw -u "$(FileNameExt)"
+    command.go.subsystem.*.pyw=1
+    command.build.SConscript=scons.bat --up .
+    command.build.SConstruct=scons.bat .
+</pre>
 
-                <div class="clear"></div>
+python 執行路徑的修改
+----
 
-                {% for author in article.authors %}
-                {% if AUTHORS_BIO and author.name.lower() in AUTHORS_BIO %}
-                <aside class="post-author">
-                    {% set author_avatar = AUTHORS_BIO[author.name.lower()].image %}
-                    {% if  author_avatar %}
+除了採用明碼進行設定的 python.properties 必須配合修改外, 以二位元碼設定的 py373/Scripts/pelican.exe 也必須利用 hxd 進行 python 執行路徑字串置換修改.
 
-                        {% if author_avatar|lower|truncate(4, True, '') == "http" %}
-                            {% set author_avatar = author_avatar %}
-                        {% else %}
-                            {% set author_avatar = SITEURL+"/"+author_avatar %}
-                        {% endif %}
+[hxd]:https://mh-nexus.de/en/hxd/
 
-                        <figure class="post-author-avatar">
-                            <img src="{{author_avatar}}" alt="{{author.name | title}}" />
-                        </figure>
-                    {% endif %}
-                    <div class="post-author-bio">
-                        <h4 class="post-author-name"><a href="{{ SITEURL }}/{{author.url}}">{{author.name | title}}</a></h4>
-                        {% if AUTHORS_BIO[author.name.lower()].bio %}
-                            <p class="post-author-about">{{AUTHORS_BIO[author.name.lower()].bio}}</p>
-                        {% endif %}
-                        {% if AUTHORS_BIO[author.name.lower()].location %}
-                            <span class="post-author-location"><i class="ic ic-location"></i> {{AUTHORS_BIO[author.name.lower()].location}}</span>
-                        {% endif %}
-                        {% if AUTHORS_BIO[author.name.lower()].website %}
-                            <span class="post-author-website"><a href="{{AUTHORS_BIO[author.name.lower()].website}}"><i class="ic ic-link"></i> Website</a></span>
-                        {% endif %}
-                        {% if AUTHORS_BIO[author.name.lower()].twitter %}
-                            <span class="post-author-twitter"><a target="_blank" href="https://twitter.com/{{AUTHORS_BIO[author.name.lower()].twitter}}"><i class="ic ic-twitter"></i> Twitter</a></span>
-                        {% endif %}
-                        {% if AUTHORS_BIO[author.name.lower()].facebook %}
-                            <span class="post-author-facebook"><a target="_blank" href="https://facebook.com/{{AUTHORS_BIO[author.name.lower()].facebook}}"><i class="ic ic-facebook"></i> Facebook</a></span>
-                        {% endif %}
-                    </div>
-                    <div class="clear"></div>
-                </aside>
-                {% endif %}
-                {% endfor %}
+安裝 python 新增模組
+----
 
-                </section>
+當使用者在執行 python 解譯時, 若碰到缺少特定模組時, 可以利用
 
-                {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
-                <script type="text/javascript">
-                    var disqus = '{{ DISQUS_SITENAME }}';
-                    var disqus_shortname = '{{ DISQUS_SITENAME }}';
-                    {% if article.disqus_identifier %}
-                    var disqus_identifier = '{{ article.disqus_identifier }}';
-                    {% else %}
-                    var disqus_identifier = '/{{ article.url }}';
-                    {% endif %}
-                    var disqus_url = '{{ SITEURL }}/{{ article.url }}';
-                </script>
-                <noscript>Please enable JavaScript to view the comments.</noscript>
-                <section class="post-comments">
-                    {% if article.disqus_identifier %}
-                        <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="{{ article.disqus_identifier }}" >Show Comments</a>
-                    {% else %}
-                        <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="/{{ article.url }}" >Show Comments</a>
-                    {% endif %}
-                    <div id="disqus_thread"></div>
-                </section>
-                {% endif %}
+python -m pip install flask_cors
 
-                <aside class="post-nav">
-                    {% if article.next_article %}
-                    <a class="post-nav-next" href="{{ SITEURL }}/{{ article.next_article.url}}">
-                        <section class="post-nav-teaser">
-                            <i class="ic ic-arrow-left"></i>
-                                <h2 class="post-nav-title">{{ article.next_article.title }}</h2>
-                            <p class="post-nav-excerpt">{{ article.next_article.summary|striptags|truncate(90) }}</p>
-                        </section>
-                    </a>
-                    {% endif %}
-                    {% if article.prev_article %}
-                    <a class="post-nav-prev" href="{{ SITEURL }}/{{ article.prev_article.url}}">
-                        <section class="post-nav-teaser">
-                            <i class="ic ic-arrow-right"></i>
-                                <h2 class="post-nav-title">{{ article.prev_article.title }}</h2>
-                            <p class="post-nav-excerpt">{{ article.prev_article.summary|striptags|truncate(90) }}</p>
-                        </section>
-                    </a>
-                    {% endif %}
-                    <div class="clear"></div>
-                </aside>
+進行安裝.
 
-            </div>
-        </article>
-    </main>
-{% endblock content %}
+Pelican 設定修改
+----
+
+theme/attila/templates/base.html 中必須進行下列修改:
+
+<pre class="brush:jscript">
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript">
+    (function(){
+        var corecss = document.createElement('link');
+        var themecss = document.createElement('link');
+        var corecssurl = "./../cmsimde/static/syntaxhighlighter/css/shCore.css";
+        if ( corecss.setAttribute ) {
+                corecss.setAttribute( "rel", "stylesheet" );
+                corecss.setAttribute( "type", "text/css" );
+                corecss.setAttribute( "href", corecssurl );
+        } else {
+                corecss.rel = "stylesheet";
+                corecss.href = corecssurl;
+        }
+        document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+        var themecssurl = "./../cmsimde/static/syntaxhighlighter/css/shThemeDefault.css?ver=3.0.9b";
+        if ( themecss.setAttribute ) {
+                themecss.setAttribute( "rel", "stylesheet" );
+                themecss.setAttribute( "type", "text/css" );
+                themecss.setAttribute( "href", themecssurl );
+        } else {
+                themecss.rel = "stylesheet";
+                themecss.href = themecssurl;
+        }
+        //document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+        document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+    })();
+    SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+    SyntaxHighlighter.config.strings.help = '?';
+    SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+    SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+    SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+    SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+ 
+<!-- for LaTeX equations -->
+<script src="https://scrum-3.github.io/web/math/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+
+</pre>
