@@ -60,8 +60,8 @@
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
 <v t="leo.20180115115910.1"><vh>2019</vh>
 <v t="leo.20180423103639.1"><vh>2019 Fall CP 課程</vh>
-<v t="leo.20180423103656.1"><vh>@edit 20191105.md</vh>
-<v t="leo.20191106090637.1"><vh>@edit 20191105.md</vh></v>
+<v t="leo.20180423103656.1"><vh>@edit 20191106.md</vh>
+<v t="leo.20191106093900.1"><vh>@edit 20191106.md</vh></v>
 </v>
 </v>
 </v>
@@ -97,11 +97,11 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20180423103639.1"></t>
 <t tx="leo.20180423103656.1">@language md
 ---
-Title: 2018 Fall CP 課程
-Date: 2018-09-10 11:00
+Title: 2019 Fall CP 課程					
+Date: 2019-10-30 11:00
 Category: Misc
-Tags: 2018FallCP
-Slug: 2018-Fall-32-bit-Windows
+Tags: 2019FallCP
+Slug: 2019-Fall-Win10-1903
 Author: yen
 ---
 
@@ -134,20 +134,20 @@ Windows 10 1903 版次在 Fall 開學後, 將 Python 執行路徑的搜尋納入
 
 也就是帶出 Options -&gt; python.properties 設定檔案, 然後進行修改:
 
-&lt;pre class="brush:python"&gt;
+&lt;preclass="brush:python"&gt;
 if PLAT_WIN
-    command.go.*.py=Y:\cad\201906_fall\data\py373\pythonw -u "$(FileNameExt)"
-    command.go.subsystem.*.py=1
-    command.go.*.pyw=pythonw -u "$(FileNameExt)"
-    command.go.subsystem.*.pyw=1
-    command.build.SConscript=scons.bat --up .
-    command.build.SConstruct=scons.bat .
-&lt;/pre&gt;
+	command.go.*.py=Y:\cad\201906_fall\data\py373\pythonw -u "$(FileNameExt)"
+	command.go.subsystem.*.py=1
+	command.go.*.pyw=pythonw -u "$(FileNameExt)"
+	command.go.subsystem.*.pyw=1
+	command.build.SConscript=scons.bat --up .
+	command.build.SConstruct=scons.bat .
+    &lt;/pre&gt;
 
 python 執行路徑的修改
 ----
 
-除了採用明碼進行設定的 python.properties 必須配合修改外, 以二位元碼設定的 py373/Scripts/pelican.exe 也必須利用 hxd 進行 python 執行路徑字串置換修改.
+除了採用明碼進行設定的 python.properties 必須配合修改外, 以二位元碼設定的 py373/Scripts/pelican.exe 也必須利用 [hxd] 進行 python 執行路徑字串置換修改.
 
 [hxd]:https://mh-nexus.de/en/hxd/
 
