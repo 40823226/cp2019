@@ -41,8 +41,6 @@
 </v>
 <v t="leo.20180115142025.1"><vh>保留之前舊的設定檔案</vh></v>
 </v>
-<v t="leo.20191103204819.1"><vh>newHeadline</vh></v>
-<v t="leo.20191103204816.1"><vh>newHeadline</vh></v>
 </v>
 <v t="leo.20170710015511.1"><vh>編輯 plugin</vh>
 <v t="leo.20170710015523.1"><vh>@path plugin</vh>
@@ -61,7 +59,7 @@
 <v t="leo.20180115115910.1"><vh>2019</vh>
 <v t="leo.20180423103639.1"><vh>2019 Fall CP 課程</vh>
 <v t="leo.20180423103656.1"><vh>@edit 20191106.md</vh></v>
-<v t="leo.20191107215048.1"><vh>@edit 20191107.md</vh></v>
+<v t="leo.20191107222246.1"><vh>@edit 20191107-1.md</vh></v>
 </v>
 </v>
 </v>
@@ -94,8 +92,6 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20180115115910.1"></t>
 <t tx="leo.20180115142025.1"></t>
 <t tx="leo.20180423103639.1"></t>
-<t tx="leo.20191103204816.1"></t>
-<t tx="leo.20191103204819.1"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
