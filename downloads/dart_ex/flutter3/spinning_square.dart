@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 // 將最新狀態呈現出來
 /*
 StatefulWidget 通常用於:
-
 1. 需要與使用者透過表單輸入或滑鼠, 進行互動時
 2. 部件狀態隨時間產生變化時
 3. 數據傳遞過程需要更新使用者介面內容時
