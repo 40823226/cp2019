@@ -154,32 +154,36 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='About.html'>Next</a> >> About<br /><h1>First</h1>
-<p></p>
-<p><a href="http://mde.tw/cp2019/content/index.html">http://mde.tw/cp2019/content/index.html</a></p>
-<p><a href="https://dartpad.dev/embed-inline.html?id=5e2b3ffb22fbdb5096e6df82ba2713d4">https://dartpad.dev/embed-inline.html?id=5e2b3ffb22fbdb5096e6df82ba2713d4 </a></p>
-<p></p>
-<p><img alt="" height="257" src="./../images/485716.jpg" width="193"/></p>
-<p>原始碼:</p>
-<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">int i;
-int sum;
-
-main(){
-  sum = 0;
-  for(i=1;i &lt;= 10 ;i++){
-    sum += i;
-    print("$sum");
-  }
-  print('sum = $sum');
-  }
-</pre>
-<p><br/><iframe height="600" src="https://dartpad.dev/embed-inline.html?id=5e2b3ffb22fbdb5096e6df82ba2713d4" width="800"></iframe></p>
-<p>dartpad.dartlang.org/embed-dart.html?gh_owner=mdecourse&amp;gh_repo=cp2019&amp;gh_path=downloads/dart_ex/for&amp;theme=dark</p>
-<p></p>
-<p><br/><iframe height="600" src="https://dartpad.dev/embed-inline.html?id=b74b6606258a024ee80fe6c099672d2a" width="800"></iframe></p>
-<p><br/><iframe height="600" src="https://dartpad.dev/embed-inline.html?id=84b1d447d9f1ed33e54de5275b506bf8" width="800"></iframe></p>
-<p><img alt="" height="419" src="./../images/圖表.png" width="638"/></p>
-<br /> <a href='About.html'>Next</a> >> About</div>
+    <div id="tipue_search_content">W16 檢驗考試 << <a href='W16 檢驗考試.html'>Previous</a> <a href='課程內容.html'>Next</a> >> 課程內容<br /><h1>W17考試</h1>
+<h4>純 Dart 程式</h4>
+<script>
+function getDart(dirname){
+    source = "https://dartpad.github.io/embed-dart.html?gh_owner=40823226&gh_repo=cp2019&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
+    document.getElementById("iframe").src = source ;
+}
+function getHtmlDart(dirname){
+    source = "https://dartpad.github.io/embed-html.html?gh_owner=40823226&gh_repo=cp2019&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
+document.getElementById("iframe").src = source ;
+}
+function getFlutter(dirname){
+    source = "https://dartpad.github.io/embed-flutter.html?gh_owner=40823226&gh_repo=cp2019&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
+document.getElementById("iframe").src = source ;
+}
+function largest(){
+document.getElementById("iframe").width = document.body.clientWidth ;
+document.getElementById("iframe").height = document.body.clientWidth*0.5 ;
+}
+function original(){
+document.getElementById("iframe").width = 800 ;
+document.getElementById("iframe").height = 600 ;
+}
+</script>
+<p><button onclick="getDart('hello')">Hello</button> <button onclick="getDart('weight')">weight</button></p>
+<h4>Html 程式</h4>
+<p><button onclick="getHtmlDart('roc_flag')">ROC Flag</button> <button onclick="getHtmlDart('weight_change')">weight_change</button></p>
+<!-- 內建放入的 Dart 原始碼 -->
+<p><button onclick="largest()">放大</button> <button onclick="original()">回復</button></p>
+<p><iframe height="600" id="iframe" src="https://dartpad.dartlang.org/embed-dart.html?gh_owner=mdecourse&amp;gh_repo=cp2019&amp;gh_path=downloads/dart_ex/mass_spring_damping&amp;theme=dark" width="800"></iframe></p><br />W16 檢驗考試 << <a href='W16 檢驗考試.html'>Previous</a> <a href='課程內容.html'>Next</a> >> 課程內容</div>
         
     <!-- footer -->
       <div class="container">
