@@ -34,11 +34,11 @@
 <v t="leo.20200108195628.1"><vh>各國國旗</vh>
 <v t="leo.20200108195653.1"><vh>各國國旗-1</vh></v>
 </v>
+<v t="leo.20180902120523.18"><vh>查驗考試影片</vh>
+<v t="leo.20180902120523.19"><vh>iframe 導入影片</vh></v>
+</v>
 <v t="leo.20180902120523.16"><vh>導入縮排程式碼</vh>
 <v t="leo.20180902120523.17"><vh>引用程式碼</vh></v>
-</v>
-<v t="leo.20180902120523.18"><vh>導入影片</vh>
-<v t="leo.20180902120523.19"><vh>iframe 導入影片</vh></v>
 </v>
 </v>
 </v>
@@ -152,11 +152,11 @@ make.start()
 
 						
 </t>
-<t tx="leo.20180902120523.19">## 使用 iframe 導入影片
+<t tx="leo.20180902120523.19">## 查驗考試影片
 
 ### 導入影片 template
 
-&lt;iframe src="https://player.vimeo.com/video/183950627" width="640" height="492" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/ASouoBu6Q2k" width="560"&gt;&lt;/iframe&gt;
 </t>
 <t tx="leo.20180902120523.2"></t>
 <t tx="leo.20180902120523.3">@language xml
