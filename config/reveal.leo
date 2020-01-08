@@ -26,7 +26,7 @@
 </v>
 <v t="leo.20180902120523.13"><vh>各式內容引用範例</vh>
 <v t="leo.20180902120523.14"><vh>重量轉換</vh>
-<v t="leo.20180902120523.15"><vh>LaTeX 格式方程式</vh></v>
+<v t="leo.20180902120523.15"><vh>重量轉換-1</vh></v>
 </v>
 <v t="leo.20200108195423.1"><vh>溫度轉換</vh>
 <v t="leo.20200108195458.1"><vh>溫度轉換-1</vh></v>
@@ -37,8 +37,8 @@
 <v t="leo.20180902120523.18"><vh>查驗考試影片</vh>
 <v t="leo.20180902120523.19"><vh>iframe 導入影片</vh></v>
 </v>
-<v t="leo.20180902120523.16"><vh>導入縮排程式碼</vh>
-<v t="leo.20180902120523.17"><vh>引用程式碼</vh></v>
+<v t="leo.20200108201423.1"><vh>心得</vh>
+<v t="leo.20200108201617.1"><vh>心得</vh></v>
 </v>
 </v>
 </v>
@@ -77,6 +77,7 @@ Created by [KMOLab](http://lab.kmol.info/)
 * 重量轉換
 * 溫度轉換
 * 各國國旗
+* 查驗考試影片
 * 心得
 
 
@@ -103,45 +104,6 @@ Created by [KMOLab](http://lab.kmol.info/)
     &lt;/script&gt;
 &lt;/section&gt;
 
-</t>
-<t tx="leo.20180902120523.16">&lt;section data-markdown&gt;
-    &lt;script type="text/template"&gt;
-&lt;!-- 請注意, @others 不可以內縮 --&gt;
-@others
-    &lt;/script&gt;
-&lt;/section&gt;
-
-
-
-						
-</t>
-<t tx="leo.20180902120523.17">## 利用 Markdown 寫投影片
-以下利用 Markdown 格式展示 Python 程式碼:
-```
-@language python
-# use threading and subprocess to threading the make process
-import os
-import subprocess
-import threading
-
-def domake():
-    
-    path = "../exposed/api/exposed"
-    ubuntu = "../Ubuntu"
-    
-    # create obj path
-    
-    if not os.path.exists(path+"/../obj"):
-        os.makedirs(path+"/../obj")
-    
-    subprocess.call(["make", "clean"], cwd=path)
-    subprocess.call("make", cwd=path)
-    subprocess.call(["cp", "{libslvs.so, _slvs.so, slvs.py}", ubuntu], cwd=path)
-    subprocess.call(["python3", "circle_ex.py"], cwd=path+"/"+ubuntu)
-    
-make = threading.Thread(target=domake)
-make.start()
-```
 </t>
 <t tx="leo.20180902120523.18">&lt;section data-markdown&gt;
     &lt;script type="text/template"&gt;
@@ -361,5 +323,18 @@ vertical: body pane on the botton</t>
     &lt;/script&gt;
 &lt;/section&gt;
 </t>
+<t tx="leo.20200108201423.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+&lt;!-- 請注意, @others 不可以內縮 --&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+
+						
+</t>
+<t tx="leo.20200108201617.1">
+上了這堂計算機程式課程，從一開始完全都不懂，到現在可以些微的了解，去運用 dartpad程式，自己編輯程式碼，學會了hello的基本語法，學到了rungeKutta的運用，到後期可以做出溫度轉換，重量轉換，繪製各國國旗，學會拍片，剪片。很多東西都是沒接觸過根本不懂，後來慢慢學習，上課做筆記，就有漸漸的進入狀況，這門課學到的東西是非常符合趨勢，讓我們能與科技接軌，謝謝老師這麼努力的教導我們，給我們學習到不同的東西，希望以後能還有課程時間，能更進一步的踏進程式領域，學習到了一些dart基本語法以及一些相較複雜的用法，提升了我對程式語言相關方面的能力，還有將程式轉為javascript。</t>
 </tnodes>
 </leo_file>
