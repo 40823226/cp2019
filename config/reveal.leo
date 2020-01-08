@@ -51,12 +51,11 @@
 </vnodes>
 <tnodes>
 <t tx="leo.20180902120523.1"></t>
-<t tx="leo.20180902120523.10">## CMSimfly 網際內容管理
+<t tx="leo.20180902120523.10">## 40823226 計算機程式課程
 
-### KMOLab
 
 &lt;small&gt;
-Created by [KMOLab](http://lab.kmol.info/)
+Created by 40823226 (http://lab.kmol.info/)
 &lt;/small&gt;
 
 [40823226 網誌](./../blog/index.html)
@@ -116,7 +115,7 @@ Created by [KMOLab](http://lab.kmol.info/)
 </t>
 <t tx="leo.20180902120523.19">## 查驗考試影片
 
-### 導入影片 template
+
 
 &lt;p&gt;&lt;iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/ASouoBu6Q2k" width="560"&gt;&lt;/iframe&gt;
 </t>
@@ -334,7 +333,7 @@ vertical: body pane on the botton</t>
 
 						
 </t>
-<t tx="leo.20200108201617.1">
-上了這堂計算機程式課程，從一開始完全都不懂，到現在可以些微的了解，去運用 dartpad程式，自己編輯程式碼，學會了hello的基本語法，學到了rungeKutta的運用，到後期可以做出溫度轉換，重量轉換，繪製各國國旗，學會拍片，剪片。很多東西都是沒接觸過根本不懂，後來慢慢學習，上課做筆記，就有漸漸的進入狀況，這門課學到的東西是非常符合趨勢，讓我們能與科技接軌，謝謝老師這麼努力的教導我們，給我們學習到不同的東西，希望以後能還有課程時間，能更進一步的踏進程式領域，學習到了一些dart基本語法以及一些相較複雜的用法，提升了我對程式語言相關方面的能力，還有將程式轉為javascript。</t>
+<t tx="leo.20200108201617.1">心得
+上了這堂計算機程式課程，從一開始完全都不懂，到現在可以些微的了解，去運用 dartpad程式，自己編輯程式碼，學會了hello的基本語法，學到了rungeKutta的運用，到後期可以做出溫度轉換，重量轉換，繪製各國國旗，學會拍片，剪片。很多東西都是沒接觸過根本不懂，後來慢慢學習，上課做筆記，就有漸漸的進入狀況，這門課學到的東西是非常符合趨勢，讓我們能與科技接軌，謝謝老師這麼努力的教導我們，給我們學習到不同的東西，希望以後能還有課程時間，能更進一步的踏進程式領域，提升了我對程式語言相關方面的能力。</t>
 </tnodes>
 </leo_file>
